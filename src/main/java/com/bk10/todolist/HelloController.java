@@ -59,8 +59,13 @@ public class HelloController {
 
     @FXML
     void markAsCompleted(ActionEvent event) {
-        int selectedId = taskList.getSelectionModel().getSelectedIndex();
-        // taskList.getItems()
+        String selectedTask = taskList.getSelectionModel().getSelectedItem();
+        if(selectedTask == null) {
+            System.out.println("Lütfen önce bir görev seçin.");
+            return;
+        }
+        int index = taskList.getSelectionModel().getSelectedIndex();
+        taskList.getItems().set(index, "✓ " + selectedTask);
     }
 
 }
