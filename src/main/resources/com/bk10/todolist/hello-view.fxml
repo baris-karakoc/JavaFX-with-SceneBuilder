@@ -41,7 +41,7 @@
                </Lighting>
             </effect>
          </TextField>
-         <DatePicker cache="true" maxHeight="-Infinity" maxWidth="212.0" minHeight="25.0" minWidth="25.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#date" prefHeight="25.0" prefWidth="25.0" promptText="DEADLINE" showWeekNumbers="true" translateX="-10.0">
+         <DatePicker fx:id="date" cache="true" maxHeight="-Infinity" maxWidth="212.0" minHeight="25.0" minWidth="25.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#date" prefHeight="25.0" prefWidth="25.0" promptText="DEADLINE" showWeekNumbers="true" translateX="-10.0">
             <effect>
                <Lighting surfaceScale="0.0">
                   <bumpInput>
