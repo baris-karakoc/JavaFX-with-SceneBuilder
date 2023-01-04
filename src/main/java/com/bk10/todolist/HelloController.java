@@ -1,7 +1,10 @@
 package com.bk10.todolist;
 
+import java.time.LocalDate;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -10,10 +13,16 @@ import javafx.scene.layout.VBox;
 public class HelloController {
 
     @FXML
+    private DatePicker datePicker;
+
+    @FXML
     private TextField inputTask;
 
     @FXML
     private ListView<String> taskList;
+
+    @FXML
+    private ListView<DatePicker> taskDateList;
 
     @FXML
     private VBox tsk;
@@ -28,9 +37,9 @@ public class HelloController {
         } else {
             taskList.getItems().add(inputTask.getText());
             inputTask.clear();
-            // inputTask.setPromptText("Enter a Task!");
+            LocalDate date = datePicker.getValue();
+            taskDateList.getItems().add(datePicker);
         }
-
     }
     // Error Alert:
     // @FXML
@@ -69,8 +78,8 @@ public class HelloController {
     }
 
     @FXML
-    void date(ActionEvent event) {
-
+    void datePicker(ActionEvent event) {
+        // LocalDate date = datePicker.getValue();        
     }
 
 }
