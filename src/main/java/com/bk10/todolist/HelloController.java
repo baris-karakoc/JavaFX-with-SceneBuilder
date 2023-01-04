@@ -1,64 +1,63 @@
 package com.bk10.todolist;
 
-import java.time.LocalDate;
-
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 public class HelloController {
 
     @FXML
-    private DatePicker datePicker;
+    private TextField inputDate;
 
     @FXML
     private TextField inputTask;
 
     @FXML
-    private ListView<String> taskList;
+    private TextField inputTaskDescription;
 
     @FXML
-    private ListView<DatePicker> taskDateList;
+    private Label logo;
+
+    @FXML
+    private TableView<String> tableTaskList;
+
+    @FXML
+    private TableColumn<TextField, String> taskDateList;
+    
+    @FXML
+    private TableColumn<TextField, String> taskDescriptions;
+
+    @FXML
+    private TableColumn<TextField, String> taskList;
 
     @FXML
     private VBox tsk;
-
-    @FXML
-    private Label welcomeText;
 
     @FXML
     void addTask(ActionEvent event) {
         if (inputTask.getText().isBlank()) {
             inputTask.setPromptText("Lütfen geçerli bir görev giriniz.");
         } else {
-            taskList.getItems().add(inputTask.getText());
+            tableTaskList.getItems().add(inputTask.getText());
             inputTask.clear();
-            LocalDate date = datePicker.getValue();
-            taskDateList.getItems().add(datePicker);
+            
         }
     }
-    // Error Alert:
-    // @FXML
-    // void addTask(ActionEvent event) {
-    //     if (inputTask.getText().isBlank()) {
-    //         Alert alert = new Alert(AlertType.WARNING);
-    //         alert.setTitle("Uyarı");
-    //         alert.setHeaderText("Boş görev girdiniz");
-    //         alert.setContentText("Lütfen geçerli bir görev giriniz.");
-    //         alert.showAndWait();
-    //     } else {
-    //         taskList.getItems().add(inputTask.getText());
-    //     }
-    // }
 
     @FXML
     void deleteTask(ActionEvent event) {
-        int selectedId = taskList.getSelectionModel().getSelectedIndex();
-        taskList.getItems().remove(selectedId);
+        int selectedId = tableTaskList.getSelectionModel().getSelectedIndex();
+        tableTaskList.getItems().remove(selectedId);
+    }
+
+    @FXML
+    void inputDate(ActionEvent event) {
+
     }
 
     @FXML
@@ -67,19 +66,19 @@ public class HelloController {
     }
 
     @FXML
+    void inputTaskDescriptions(ActionEvent event) {
+
+    }
+
+    @FXML
     void markAsCompleted(ActionEvent event) {
-        String selectedTask = taskList.getSelectionModel().getSelectedItem();
+        String selectedTask = tableTaskList.getSelectionModel().getSelectedItem();
         if(selectedTask == null) {
             System.out.println("Lütfen önce bir görev seçin.");
             return;
         }
-        int index = taskList.getSelectionModel().getSelectedIndex();
-        taskList.getItems().set(index, "✓ " + selectedTask);
-    }
-
-    @FXML
-    void datePicker(ActionEvent event) {
-        // LocalDate date = datePicker.getValue();        
+        int index = tableTaskList.getSelectionModel().getSelectedIndex();
+        tableTaskList.getItems().set(index, "✓ " + selectedTask);
     }
 
 }
