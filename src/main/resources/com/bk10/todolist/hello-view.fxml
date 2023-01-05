@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="tsk" alignment="CENTER" prefHeight="458.0" prefWidth="736.0" spacing="20.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bk10.todolist.HelloController">
+<VBox fx:id="tsk" alignment="CENTER" prefHeight="458.0" prefWidth="736.0" spacing="20.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bk10.todolist.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -48,14 +47,14 @@
    </Label>
    <TableView fx:id="tableTaskList" prefHeight="463.0" prefWidth="560.0">
      <columns>
-       <TableColumn fx:id="taskList" prefWidth="274.0" text="Tasks" />
-       <TableColumn fx:id="taskDescriptions" prefWidth="312.0" text="Task Descriptions" />
-         <TableColumn fx:id="taskDateList" prefWidth="84.0" text="Date" />
+       <TableColumn fx:id="taskList" prefWidth="269.0" text="Tasks" />
+       <TableColumn fx:id="taskDescriptions" prefWidth="341.0" text="Task Descriptions" />
+         <TableColumn fx:id="taskDateList" minWidth="0.0" prefWidth="83.0" text="Date" />
      </columns>
    </TableView>
-   <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="687.0">
+   <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="694.0">
      <buttons>
-         <TextField fx:id="inputTask" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputTask" prefHeight="25.0" prefWidth="515.0" promptText="Task">
+         <TextField fx:id="inputTask" alignment="CENTER" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputTask" prefHeight="25.0" prefWidth="500.0" promptText="Task">
             <effect>
                <Lighting diffuseConstant="1.18" specularConstant="2.0" specularExponent="27.36" surfaceScale="0.0">
                   <bumpInput>
@@ -79,7 +78,7 @@
                </Lighting>
             </effect>
          </TextField>
-         <TextField fx:id="inputDate" alignment="CENTER" layoutX="305.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="151.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputDate" prefHeight="25.0" prefWidth="150.0" promptText="Date">
+         <TextField fx:id="inputDate" alignment="CENTER" layoutX="305.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="150.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputDate" prefHeight="25.0" prefWidth="80.0" promptText=". . / . . / . .">
             <effect>
                <Lighting diffuseConstant="1.18" specularConstant="2.0" specularExponent="27.36" surfaceScale="0.0">
                   <bumpInput>
@@ -109,11 +108,13 @@
             </effect>
             <font>
                <Font name="System Bold" size="12.0" />
-            </font></Button>
+            </font>
+         </Button>
          <Button defaultButton="true" mnemonicParsing="false" onAction="#markAsCompleted" text="Mark As Completed">
             <font>
                <Font name="System Bold" size="12.0" />
-            </font></Button>
+            </font>
+         </Button>
          <Button defaultButton="true" mnemonicParsing="false" onAction="#deleteTask" text="Delete Task">
             <effect>
                <Lighting diffuseConstant="2.0" surfaceScale="0.0">
@@ -135,10 +136,8 @@
             </effect>
             <font>
                <Font name="System Bold" size="12.0" />
-            </font></Button>
+            </font>
+         </Button>
      </buttons>
    </ButtonBar>
-   <effect>
-      <ColorAdjust />
-   </effect>
 </VBox>

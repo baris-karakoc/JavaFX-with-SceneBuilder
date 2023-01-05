@@ -22,9 +22,3 @@ public class HelloApplication extends Application {
         launch();
     }
 }
-
-// FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-//         Scene scene = new Scene(fxmlLoader.load());
-//         stage.setTitle("To-Do List");
-//         stage.setScene(scene);
-//         stage.show();

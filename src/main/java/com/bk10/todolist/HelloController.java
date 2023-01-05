@@ -1,12 +1,12 @@
 package com.bk10.todolist;
 
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 public class HelloController {
@@ -24,28 +24,42 @@ public class HelloController {
     private Label logo;
 
     @FXML
-    private TableView<String> tableTaskList;
+    private TableView<FileData> tableTaskList;
 
     @FXML
-    private TableColumn<TextField, String> taskDateList;
-    
-    @FXML
-    private TableColumn<TextField, String> taskDescriptions;
+    private TableColumn<FileData, String> taskDateList;
 
     @FXML
-    private TableColumn<TextField, String> taskList;
+    private TableColumn<FileData, String> taskDescriptions;
+
+    @FXML
+    private TableColumn<FileData, String> taskList;
 
     @FXML
     private VBox tsk;
 
     @FXML
     void addTask(ActionEvent event) {
-        if (inputTask.getText().isBlank()) {
+        taskList.setCellValueFactory(new PropertyValueFactory<FileData, String>("task"));
+        taskDescriptions.setCellValueFactory(new PropertyValueFactory<FileData, String>("taskDescriptions"));
+        taskDateList.setCellValueFactory(new PropertyValueFactory<FileData, String>("taskDate"));
+
+        // ObservableList<FileData> observableList = FXCollections.observableArrayList(
+        // new FileData("görev","görev açıklaması", "tarih")
+        // );
+        // tableTaskList.setItems(observableList);
+
+        if (inputTask.getText().isBlank() || inputTaskDescription.getText().isBlank()
+                || inputDate.getText().isBlank()) {
             inputTask.setPromptText("Lütfen geçerli bir görev giriniz.");
+            inputTaskDescription.setPromptText("Lütfen geçerli bir görev açıklaması giriniz.");
+            inputDate.setPromptText("Lütfen geçerli bir tarih giriniz.");
         } else {
-            tableTaskList.getItems().add(inputTask.getText());
+            FileData fileData = new FileData(inputTask.getText(), inputTaskDescription.getText(), inputDate.getText());
+            tableTaskList.getItems().add(fileData);
             inputTask.clear();
-            
+            inputTaskDescription.clear();
+            inputDate.clear();
         }
     }
 
@@ -72,13 +86,19 @@ public class HelloController {
 
     @FXML
     void markAsCompleted(ActionEvent event) {
-        String selectedTask = tableTaskList.getSelectionModel().getSelectedItem();
-        if(selectedTask == null) {
-            System.out.println("Lütfen önce bir görev seçin.");
-            return;
+
+        FileData selectedTask = tableTaskList.getSelectionModel().getSelectedItem();
+        if (selectedTask == null) {
+        System.out.println("Lütfen önce bir görev seçin.");
+        return;
         }
         int index = tableTaskList.getSelectionModel().getSelectedIndex();
-        tableTaskList.getItems().set(index, "✓ " + selectedTask);
+        selectedTask.setTask("✓ " + selectedTask.getTask());
+        tableTaskList.getItems().set(index, selectedTask);
     }
+
+    // FileData selectedTask = tableTaskList.getSelectionModel().getSelectedItem();
+    // int index = tableTaskList.getSelectionModel().getSelectedIndex();
+    // tableTaskList.getItems().set(index,"+" + selectedTask);
 
 }
