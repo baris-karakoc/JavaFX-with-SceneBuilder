@@ -17,16 +17,20 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="tsk" alignment="CENTER" prefHeight="458.0" prefWidth="736.0" spacing="20.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bk10.todolist.HelloController">
+
+<VBox fx:id="tsk" alignment="CENTER" prefHeight="544.0" prefWidth="736.0" spacing="20.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bk10.todolist.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Label fx:id="logo" text="To Do List">
+   <Label fx:id="logo" graphicTextGap="0.0" prefHeight="0.0" prefWidth="239.0" text="To Do List" textAlignment="CENTER">
       <font>
-         <Font name="Felix Titling" size="45.0" />
+         <Font name="Chiller" size="76.0" />
       </font>
+      <effect>
+         <Glow level="0.0" />
+      </effect>
       <textFill>
-         <RadialGradient centerX="0.48342541436464087" centerY="0.5047393364928909" radius="0.5574712643678161">
+         <RadialGradient centerX="0.48342541436464087" centerY="0.9881516587677724" radius="0.5574712643678161">
             <stops>
                <Stop>
                   <color>
@@ -35,24 +39,21 @@
                </Stop>
                <Stop offset="1.0">
                   <color>
-                     <Color blue="1.0" />
+                     <Color red="0.8594285845756531" green="0.9399999976158142" />
                   </color>
                </Stop>
             </stops>
          </RadialGradient>
       </textFill>
-      <effect>
-         <Glow level="1.0" />
-      </effect>
    </Label>
-   <TableView fx:id="tableTaskList" prefHeight="463.0" prefWidth="560.0">
+   <TableView fx:id="tableTaskList" prefHeight="463.0" prefWidth="560.0" stylesheets="@DarkTheme.css">
      <columns>
        <TableColumn fx:id="taskList" prefWidth="269.0" text="Tasks" />
        <TableColumn fx:id="taskDescriptions" prefWidth="341.0" text="Task Descriptions" />
          <TableColumn fx:id="taskDateList" minWidth="0.0" prefWidth="83.0" text="Date" />
      </columns>
    </TableView>
-   <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="694.0">
+   <ButtonBar maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="694.0" stylesheets="@DarkTheme.css">
      <buttons>
          <TextField fx:id="inputTask" alignment="CENTER" maxHeight="-Infinity" maxWidth="500.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputTask" prefHeight="25.0" prefWidth="500.0" promptText="Task">
             <effect>
@@ -66,7 +67,7 @@
                </Lighting>
             </effect>
          </TextField>
-         <TextField fx:id="inputTaskDescription" alignment="CENTER" layoutX="55.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="650.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputTaskDescriptions" prefHeight="25.0" prefWidth="550.0" promptText="Task Descriptions">
+         <TextField fx:id="inputTaskDescription" alignment="CENTER" layoutX="55.0" layoutY="18.0" maxHeight="-Infinity" maxWidth="650.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#inputTaskDescriptions" prefHeight="25.0" prefWidth="550.0" promptText="Task Descriptions" stylesheets="@DarkTheme.css">
             <effect>
                <Lighting diffuseConstant="1.18" specularConstant="2.0" specularExponent="27.36" surfaceScale="0.0">
                   <bumpInput>
@@ -92,7 +93,7 @@
          </TextField>
      </buttons>
    </ButtonBar>
-   <ButtonBar focusTraversable="false" prefHeight="25.0" prefWidth="485.0" scaleShape="false">
+   <ButtonBar focusTraversable="false" prefHeight="25.0" prefWidth="485.0" scaleShape="false" stylesheets="@DarkTheme.css">
      <buttons>
           <Button defaultButton="true" onAction="#addTask" text="Add Task">
             <effect>
