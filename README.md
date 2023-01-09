@@ -5,7 +5,7 @@
 
 ## Screenshots
 
-![Uygulama Ekran Görüntüsü](https://thumbs2.imgbox.com/f3/3c/LSjUkYhr_t.png)
+![Uygulama Ekran Görüntüsü](https://images2.imgbox.com/f3/3c/LSjUkYhr_o.png)
 
   
 ## Developer
